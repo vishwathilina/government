@@ -106,7 +106,7 @@ export default function LoginPage() {
         </div>
 
         <p className="text-sm text-primary-200">
-          © 2024 Government Utility Services. All rights reserved.
+          Project by Students at NSBM Group 66
         </p>
       </div>
 
@@ -213,16 +213,6 @@ export default function LoginPage() {
             </div>
           </div>
 
-          {/* Help Text */}
-          <p className="mt-6 text-center text-sm text-gray-600">
-            Having trouble signing in?{" "}
-            <a
-              href="#"
-              className="text-primary-600 hover:text-primary-700 font-medium"
-            >
-              Contact IT Support
-            </a>
-          </p>
         </div>
       </div>
     </div>
