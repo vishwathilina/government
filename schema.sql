@@ -1,7 +1,7 @@
 
 
 /* ============================================================
-   Government Utility Management System - SQL Server DDL
+   Govenly - SQL Server DDL
    Generated from Data Dictionary (Final)
    Target: Microsoft SQL Server
    ============================================================ */

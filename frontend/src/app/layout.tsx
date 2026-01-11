@@ -3,7 +3,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
-  title: "Government Utility Management System",
+  title: "Govenly",
   description: "Manage water, electricity, and gas utilities efficiently",
 };
 

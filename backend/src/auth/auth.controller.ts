@@ -7,7 +7,6 @@ import { CustomerLoginDto } from './dto/customer-login.dto';
 import { CustomerLoginResponseDto } from './dto/customer-login-response.dto';
 import { CustomerRegisterDto, CustomerRegisterResponseDto } from './dto/customer-register.dto';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
-import { ApiResponseDto } from '../common/dto/api-response.dto';
 import { EmployeeResponseDto } from '../employees/dto/employee-response.dto';
 
 @ApiTags('Authentication')
@@ -79,12 +78,8 @@ export class AuthController {
     status: 401,
     description: 'Unauthorized',
   })
-  async getProfile(@Request() req: any): Promise<ApiResponseDto<EmployeeResponseDto>> {
+  async getProfile(@Request() req: any): Promise<EmployeeResponseDto> {
     const employee = await this.authService.getProfile(req.user.employeeId);
-    return {
-      success: true,
-      data: EmployeeResponseDto.fromEntity(employee),
-      message: 'Profile retrieved successfully',
-    };
+    return EmployeeResponseDto.fromEntity(employee);
   }
 }

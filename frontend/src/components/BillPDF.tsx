@@ -293,7 +293,7 @@ const styles = StyleSheet.create({
 
 const BillPDF: React.FC<BillPDFProps> = ({ bill }) => {
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat("en-US", {
+    return new Intl.NumberFormat("en-LK", {
       style: "currency",
       currency: "LKR",
     }).format(amount);

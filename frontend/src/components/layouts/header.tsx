@@ -33,7 +33,7 @@ export function Header() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-30 h-16 bg-white border-b border-gray-200">
+    <header className="sticky top-0 z-30 h-16 bg-gray-50 border-b border-gray-200">
       <div className="flex h-full items-center justify-between px-6">
         {/* Search */}
         <div className="flex-1 max-w-lg">
@@ -49,12 +49,6 @@ export function Header() {
 
         {/* Right side actions */}
         <div className="flex items-center space-x-4">
-          {/* Notifications */}
-          <button className="relative p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg">
-            <Bell className="h-5 w-5" />
-            <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />
-          </button>
-
           {/* Profile Dropdown */}
           <div ref={profileRef} className="relative">
             <button
@@ -82,7 +76,7 @@ export function Header() {
 
             {/* Dropdown Menu */}
             {isProfileOpen && (
-              <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-50">
+              <div className="absolute right-0 mt-2 w-56 bg-gray-50 rounded-lg shadow-lg border border-gray-200 py-1 z-50">
                 <div className="px-4 py-3 border-b border-gray-100">
                   <p className="text-sm font-medium text-gray-900">
                     {employee?.fullName}

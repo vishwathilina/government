@@ -33,9 +33,9 @@ async function bootstrap() {
 
   // Swagger documentation setup
   const config = new DocumentBuilder()
-    .setTitle('Government Utility Management System API')
+    .setTitle('Govenly API')
     .setDescription(
-      'API documentation for the Government Utility Management System - Managing water, electricity, and gas utilities',
+      'API documentation for Govenly - Managing water, electricity, and gas utilities',
     )
     .setVersion('1.0')
     .addBearerAuth(

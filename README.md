@@ -1,11 +1,11 @@
-# Government Utility Management System
+# Govenly
 
 A comprehensive full-stack application for managing water, electricity, and gas utilities including customer management, billing, meter reading, payments, work orders, inventory, and HR/payroll.
 
 ## Project Structure
 
 ```
-GOVERNMENT UTILITY MANAGEMENT SYSTEM/
+GOVENLY/
 ├── backend/                    # NestJS Backend API
 │   ├── src/
 │   │   ├── auth/              # Authentication module

@@ -22,8 +22,8 @@ async function bootstrap() {
     }));
     app.useGlobalInterceptors(new transform_response_interceptor_1.TransformResponseInterceptor());
     const config = new swagger_1.DocumentBuilder()
-        .setTitle('Government Utility Management System API')
-        .setDescription('API documentation for the Government Utility Management System - Managing water, electricity, and gas utilities')
+        .setTitle('Govenly API')
+        .setDescription('API documentation for Govenly - Managing water, electricity, and gas utilities')
         .setVersion('1.0')
         .addBearerAuth({
         type: 'http',

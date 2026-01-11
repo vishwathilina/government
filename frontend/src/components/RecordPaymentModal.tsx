@@ -103,7 +103,7 @@ export default function RecordPaymentModal({
 
     // Format currency
     const formatCurrency = (amount: number) => {
-        return new Intl.NumberFormat("en-US", {
+        return new Intl.NumberFormat("en-LK", {
             style: "currency",
             currency: "LKR",
         }).format(amount);

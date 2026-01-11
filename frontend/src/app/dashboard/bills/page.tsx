@@ -114,7 +114,7 @@ export default function BillsPage() {
     return Math.max(0, afterCredits + taxAmount);
   };
 
-  const formatCurrency = (amount: number): string => new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(amount);
+  const formatCurrency = (amount: number): string => new Intl.NumberFormat("en-LK", { style: "currency", currency: "LKR" }).format(amount);
   const formatDate = (dateString: string): string => new Date(dateString).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
 
   const getBillStatus = (bill: Bill): { label: string; color: string } => {
@@ -184,14 +184,6 @@ export default function BillsPage() {
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Bills Management</h1>
           <p className="text-gray-600 mt-1">Manage utility bills, generate new bills, and track payments</p>
-        </div>
-        <div className="flex gap-2">
-          <button onClick={() => setShowBulkModal(true)} className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
-            Generate All Bills
-          </button>
-          <button onClick={() => setShowGenerateModal(true)} className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
-            + Single Bill
-          </button>
         </div>
       </div>
 

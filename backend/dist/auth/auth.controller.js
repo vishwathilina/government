@@ -38,11 +38,7 @@ let AuthController = class AuthController {
     }
     async getProfile(req) {
         const employee = await this.authService.getProfile(req.user.employeeId);
-        return {
-            success: true,
-            data: employee_response_dto_1.EmployeeResponseDto.fromEntity(employee),
-            message: 'Profile retrieved successfully',
-        };
+        return employee_response_dto_1.EmployeeResponseDto.fromEntity(employee);
     }
 };
 exports.AuthController = AuthController;

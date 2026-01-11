@@ -1,7 +1,7 @@
 {
   "name": "utility-management-backend",
   "version": "1.0.0",
-  "description": "Government Utility Management System - NestJS Backend",
+  "description": "Govenly - NestJS Backend",
   "author": "",
   "private": true,
   "license": "UNLICENSED",
