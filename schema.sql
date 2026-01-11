@@ -1,7 +1,7 @@
 
 
 /* ============================================================
-   Govenly - SQL Server DDL
+   Government Utility Management System - SQL Server DDL
    Generated from Data Dictionary (Final)
    Target: Microsoft SQL Server
    ============================================================ */
@@ -234,6 +234,7 @@ CREATE TABLE dbo.Customer (
     email                VARCHAR(255) NULL,
     customer_address_id  BIGINT NOT NULL,
     customer_type        VARCHAR(30) NOT NULL,
+    status               VARCHAR(20) NOT NULL CONSTRAINT DF_Customer_status DEFAULT 'ACTIVE',
     registration_date    DATE NOT NULL,
     identity_type        VARCHAR(30) NOT NULL,
     identity_ref         VARCHAR(80) NOT NULL,
@@ -244,7 +245,8 @@ CREATE TABLE dbo.Customer (
     CONSTRAINT FK_Customer_Address FOREIGN KEY (customer_address_id)
         REFERENCES dbo.CustomerAddress(customer_address_id),
     CONSTRAINT FK_Customer_Employee FOREIGN KEY (employee_id)
-        REFERENCES dbo.Employee(employee_id)
+        REFERENCES dbo.Employee(employee_id),
+    CONSTRAINT CK_Customer_status CHECK (status IN ('ACTIVE','INACTIVE','SUSPENDED','BLOCKED'))
     -- FK to TariffCategory added after TariffCategory table creation
 );
 GO
@@ -375,6 +377,7 @@ CREATE TABLE dbo.ServiceConnection (
     utility_type_id        BIGINT NOT NULL,
     tariff_category_id     BIGINT NOT NULL,
     connection_status      VARCHAR(30) NOT NULL,
+    connection_date        DATE NOT NULL CONSTRAINT DF_ServiceConnection_date DEFAULT GETDATE(),
     meter_id               BIGINT NULL,
     connection_address_id  BIGINT NOT NULL,
     node_id                BIGINT NULL,
@@ -400,10 +403,12 @@ CREATE TABLE dbo.MeterReading (
     reading_id         BIGINT IDENTITY(1,1) NOT NULL,
     reading_source     VARCHAR(30) NOT NULL,
     reading_date       DATETIME2(0) NOT NULL,
+    reading_status     VARCHAR(20) NOT NULL CONSTRAINT DF_MeterReading_status DEFAULT 'PENDING',
     import_reading     DECIMAL(14,3) NULL,
     prev_import_reading DECIMAL(14,3) NULL,
     export_reading     DECIMAL(14,3) NULL,
     prev_export_reading DECIMAL(14,3) NULL,
+    consumption        AS (ISNULL(import_reading, 0) - ISNULL(prev_import_reading, 0)) PERSISTED,
     created_at         DATETIME2(0) NOT NULL,
     device_id          VARCHAR(80) NULL,
     meter_id           BIGINT NOT NULL,
@@ -412,7 +417,8 @@ CREATE TABLE dbo.MeterReading (
     CONSTRAINT FK_MeterReading_Meter FOREIGN KEY (meter_id)
         REFERENCES dbo.Meter(meter_id),
     CONSTRAINT FK_MeterReading_MeterReader FOREIGN KEY (meter_reader_id)
-        REFERENCES dbo.MeterReader(employee_id)
+        REFERENCES dbo.MeterReader(employee_id),
+    CONSTRAINT CK_MeterReading_status CHECK (reading_status IN ('PENDING','VERIFIED','REJECTED','ESTIMATED'))
 );
 GO
 
@@ -433,6 +439,7 @@ CREATE TABLE dbo.Bill (
     fixed_charge_amount   DECIMAL(12,2) NOT NULL,
     subsidy_amount        DECIMAL(12,2) NOT NULL CONSTRAINT DF_Bill_subsidy DEFAULT (0),
     solar_export_credit   DECIMAL(12,2) NOT NULL CONSTRAINT DF_Bill_export_credit DEFAULT (0),
+    total_amount          AS (energy_charge_amount + fixed_charge_amount - subsidy_amount - solar_export_credit) PERSISTED,
     CONSTRAINT PK_Bill PRIMARY KEY (bill_id),
     CONSTRAINT FK_Bill_Meter FOREIGN KEY (meter_id)
         REFERENCES dbo.Meter(meter_id)
@@ -478,23 +485,58 @@ CREATE TABLE dbo.BillTax (
 );
 GO
 
+CREATE TABLE dbo.BillAdjustment (
+    adjustment_id        BIGINT IDENTITY(1,1) NOT NULL,
+    bill_id              BIGINT NOT NULL,
+    adjustment_type      VARCHAR(20) NOT NULL,
+    adjustment_amount    DECIMAL(12,2) NOT NULL,
+    adjustment_reason    NVARCHAR(500) NULL,
+    adjustment_date      DATE NOT NULL,
+    employee_id          BIGINT NULL,
+    CONSTRAINT PK_BillAdjustment PRIMARY KEY (adjustment_id),
+    CONSTRAINT FK_BillAdjustment_Bill FOREIGN KEY (bill_id)
+        REFERENCES dbo.Bill(bill_id),
+    CONSTRAINT FK_BillAdjustment_Employee FOREIGN KEY (employee_id)
+        REFERENCES dbo.Employee(employee_id),
+    CONSTRAINT CK_BillAdjustment_type CHECK (adjustment_type IN ('CREDIT','DEBIT'))
+);
+GO
+
+CREATE TABLE dbo.Tariff (
+    tariff_id            BIGINT IDENTITY(1,1) NOT NULL,
+    utility_type_id      BIGINT NOT NULL,
+    rate_per_unit        DECIMAL(12,4) NOT NULL,
+    fixed_charge         DECIMAL(12,2) NOT NULL,
+    effective_date       DATE NOT NULL,
+    end_date             DATE NULL,
+    CONSTRAINT PK_Tariff PRIMARY KEY (tariff_id),
+    CONSTRAINT FK_Tariff_UtilityType FOREIGN KEY (utility_type_id)
+        REFERENCES dbo.UtilityType(utility_type_id)
+);
+GO
+
 CREATE TABLE dbo.Payment (
     payment_id        BIGINT IDENTITY(1,1) NOT NULL,
     payment_date      DATETIME2(0) NOT NULL,
     payment_amount    DECIMAL(12,2) NOT NULL,
     payment_method    VARCHAR(30) NOT NULL,
     payment_channel   VARCHAR(30) NULL,
+    payment_status    VARCHAR(20) NOT NULL CONSTRAINT DF_Payment_status DEFAULT 'COMPLETED',
     transaction_ref   VARCHAR(120) NULL,
     bill_id           BIGINT NOT NULL,
+    connection_id     BIGINT NOT NULL,
     employee_id       BIGINT NULL,
     customer_id       BIGINT NULL, -- keep if you want snapshot
     CONSTRAINT PK_Payment PRIMARY KEY (payment_id),
     CONSTRAINT FK_Payment_Bill FOREIGN KEY (bill_id)
         REFERENCES dbo.Bill(bill_id),
+    CONSTRAINT FK_Payment_ServiceConnection FOREIGN KEY (connection_id)
+        REFERENCES dbo.ServiceConnection(connection_id),
     CONSTRAINT FK_Payment_Employee FOREIGN KEY (employee_id)
         REFERENCES dbo.Employee(employee_id),
     CONSTRAINT FK_Payment_Customer FOREIGN KEY (customer_id)
-        REFERENCES dbo.Customer(customer_id)
+        REFERENCES dbo.Customer(customer_id),
+    CONSTRAINT CK_Payment_status CHECK (payment_status IN ('PENDING','COMPLETED','FAILED','REFUNDED','CANCELLED'))
 );
 GO
 
@@ -1066,6 +1108,5 @@ CREATE INDEX IX_Bill_meter_period ON dbo.Bill(meter_id, billing_period_start, bi
 CREATE INDEX IX_MeterReading_meter_date ON dbo.MeterReading(meter_id, reading_date);
 CREATE INDEX IX_WorkOrder_geo_status ON dbo.WorkOrder(geo_area_id, work_order_status);
 CREATE INDEX IX_StockTransaction_warehouse_ts ON dbo.StockTransaction(warehouse_id, txn_ts);
+CREATE INDEX IX_Payment_connection_id ON dbo.Payment(connection_id) INCLUDE (payment_amount, payment_date);
 GO
-
-

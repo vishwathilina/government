@@ -24,10 +24,10 @@ function formatCurrencyLKR(amount: number) {
   }).format(Number.isFinite(amount) ? amount : 0);
 }
 
-function formatCompactCurrencyUSD(amount: number) {
-  return new Intl.NumberFormat("en-US", {
+function formatCompactCurrencyLKR(amount: number) {
+  return new Intl.NumberFormat("en-LK", {
     style: "currency",
-    currency: "USD",
+    currency: "LKR",
     notation: "compact",
     maximumFractionDigits: 1,
   }).format(Number.isFinite(amount) ? amount : 0);
@@ -67,9 +67,8 @@ function StatCard({
           <TrendingDown className="h-4 w-4 text-red-500 mr-1" />
         )}
         <span
-          className={`text-sm font-medium ${
-            changeType === "increase" ? "text-green-600" : "text-red-600"
-          }`}
+          className={`text-sm font-medium ${changeType === "increase" ? "text-green-600" : "text-red-600"
+            }`}
         >
           {change}
         </span>
@@ -265,7 +264,7 @@ export default function DashboardPage() {
           value={
             loading
               ? "…"
-              : formatCompactCurrencyUSD((stats?.revenueMTD ?? 0) / 300)
+              : formatCompactCurrencyLKR(stats?.revenueMTD ?? 0)
           }
           change={`${stats?.revenueChangePercent ?? 0}%`}
           changeType={(stats?.revenueChangePercent ?? 0) >= 0 ? "increase" : "decrease"}

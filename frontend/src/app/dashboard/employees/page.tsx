@@ -305,7 +305,7 @@ function EmployeeForm({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (isEdit) {
       const updateData: UpdateEmployeeDto = {};
       if (formData.firstName !== employee.firstName) updateData.firstName = formData.firstName;
@@ -545,7 +545,7 @@ function DeleteConfirmModal({
             </p>
           </div>
         </div>
-        
+
         <div className="p-4 bg-gray-50 rounded-lg">
           <p className="text-sm text-gray-600">Employee Details:</p>
           <p className="font-medium">{employee.fullName}</p>
@@ -734,9 +734,9 @@ export default function EmployeesPage() {
         </div>
         <button
           onClick={handleAddNew}
-          className="btn btn-primary flex items-center gap-2"
+          className="btn btn-primary flex items-center gap-2 px-5 py-2.5 text-base"
         >
-          <Plus className="h-4 w-4" />
+          <Plus className="h-5 w-5" />
           Add Employee
         </button>
       </div>
