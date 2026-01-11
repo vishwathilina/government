@@ -1,0 +1,32 @@
+import { Meter } from './meter.entity';
+import { BillDetail } from './bill-detail.entity';
+import { BillTax } from './bill-tax.entity';
+import { Payment } from './payment.entity';
+export declare class Bill {
+    billId: number;
+    meterId: number;
+    billingPeriodStart: Date;
+    billingPeriodEnd: Date;
+    billDate: Date;
+    dueDate: Date;
+    totalImportUnit: number;
+    totalExportUnit: number;
+    energyChargeAmount: number;
+    fixedChargeAmount: number;
+    subsidyAmount: number;
+    solarExportCredit: number;
+    meter: Meter;
+    billDetails: BillDetail[];
+    billTaxes: BillTax[];
+    payments: Payment[];
+    getTaxAmount(): number;
+    getTotalAmount(): number;
+    getNetPayable(): number;
+    getTotalPaid(): number;
+    isPaid(): boolean;
+    getOutstandingBalance(): number;
+    isOverdue(currentDate?: Date): boolean;
+    getDaysOverdue(currentDate?: Date): number;
+    getBillingPeriodDays(): number;
+    getAverageDailyConsumption(): number;
+}

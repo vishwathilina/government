@@ -1,0 +1,37 @@
+{
+  "stack": "QueryFailedError: Error: Invalid column name 'connectionDate'.\n    at <anonymous> (/run/media/jarvis/Data/Academic/2year/IMR/imr/Government-Utility-Management-System/backend/node_modules/typeorm/driver/src/driver/sqlserver/SqlServerQueryRunner.ts:277:30)\n    at /run/media/jarvis/Data/Academic/2year/IMR/imr/Government-Utility-Management-System/backend/node_modules/mssql/lib/base/request.js:440:25\n    at Request.userCallback (/run/media/jarvis/Data/Academic/2year/IMR/imr/Government-Utility-Management-System/backend/node_modules/mssql/lib/tedious/request.js:492:15)\n    at Request.Request.callback (/run/media/jarvis/Data/Academic/2year/IMR/imr/Government-Utility-Management-System/backend/node_modules/tedious/src/request.ts:379:14)\n    at Parser.onEndOfMessage (/run/media/jarvis/Data/Academic/2year/IMR/imr/Government-Utility-Management-System/backend/node_modules/tedious/src/connection.ts:3713:22)\n    at Object.onceWrapper (node:events:622:28)\n    at Parser.emit (node:events:508:28)\n    at Readable.<anonymous> (/run/media/jarvis/Data/Academic/2year/IMR/imr/Government-Utility-Management-System/backend/node_modules/tedious/src/token/token-stream-parser.ts:30:12)\n    at Readable.emit (node:events:508:28)\n    at endReadableNT (node:internal/streams/readable:1701:12)",
+  "message": "Error: Invalid column name 'connectionDate'.",
+  "query": "SELECT COUNT(1) AS \"cnt\" FROM \"ServiceConnection\" \"conn\" WHERE \"conn\".\"connection_status\" = @0 AND conn.connectionDate < @1",
+  "parameters": [
+    "ACTIVE",
+    "2025-12-31T18:30:00.000Z"
+  ],
+  "driverError": {
+    "stack": "RequestError: Invalid column name 'connectionDate'.\n    at handleError (/run/media/jarvis/Data/Academic/2year/IMR/imr/Government-Utility-Management-System/backend/node_modules/mssql/lib/tedious/request.js:384:15)\n    at Connection.emit (node:events:508:28)\n    at Connection.emit (/run/media/jarvis/Data/Academic/2year/IMR/imr/Government-Utility-Management-System/backend/node_modules/tedious/src/connection.ts:1902:18)\n    at RequestTokenHandler.onErrorMessage (/run/media/jarvis/Data/Academic/2year/IMR/imr/Government-Utility-Management-System/backend/node_modules/tedious/src/token/handler.ts:388:21)\n    at Readable.token (/run/media/jarvis/Data/Academic/2year/IMR/imr/Government-Utility-Management-System/backend/node_modules/tedious/src/token/token-stream-parser.ts:22:55)\n    at Readable.emit (node:events:508:28)\n    at addChunk (node:internal/streams/readable:559:12)\n    at readableAddChunkPushObjectMode (node:internal/streams/readable:536:3)\n    at Readable.push (node:internal/streams/readable:391:5)\n    at nextAsync (node:internal/streams/from:194:22)",
+    "message": "Invalid column name 'connectionDate'.",
+    "code": "EREQUEST",
+    "originalError": {
+      "stack": "Error: Invalid column name 'connectionDate'.\n    at handleError (/run/media/jarvis/Data/Academic/2year/IMR/imr/Government-Utility-Management-System/backend/node_modules/mssql/lib/tedious/request.js:382:19)\n    at Connection.emit (node:events:508:28)\n    at Connection.emit (/run/media/jarvis/Data/Academic/2year/IMR/imr/Government-Utility-Management-System/backend/node_modules/tedious/src/connection.ts:1902:18)\n    at RequestTokenHandler.onErrorMessage (/run/media/jarvis/Data/Academic/2year/IMR/imr/Government-Utility-Management-System/backend/node_modules/tedious/src/token/handler.ts:388:21)\n    at Readable.token (/run/media/jarvis/Data/Academic/2year/IMR/imr/Government-Utility-Management-System/backend/node_modules/tedious/src/token/token-stream-parser.ts:22:55)\n    at Readable.emit (node:events:508:28)\n    at addChunk (node:internal/streams/readable:559:12)\n    at readableAddChunkPushObjectMode (node:internal/streams/readable:536:3)\n    at Readable.push (node:internal/streams/readable:391:5)\n    at nextAsync (node:internal/streams/from:194:22)",
+      "message": "Invalid column name 'connectionDate'."
+    },
+    "number": 207,
+    "lineNumber": 1,
+    "state": 1,
+    "class": 16,
+    "serverName": "534c67221bf1",
+    "procName": "",
+    "precedingErrors": []
+  },
+  "code": "EREQUEST",
+  "originalError": {
+    "stack": "Error: Invalid column name 'connectionDate'.\n    at handleError (/run/media/jarvis/Data/Academic/2year/IMR/imr/Government-Utility-Management-System/backend/node_modules/mssql/lib/tedious/request.js:382:19)\n    at Connection.emit (node:events:508:28)\n    at Connection.emit (/run/media/jarvis/Data/Academic/2year/IMR/imr/Government-Utility-Management-System/backend/node_modules/tedious/src/connection.ts:1902:18)\n    at RequestTokenHandler.onErrorMessage (/run/media/jarvis/Data/Academic/2year/IMR/imr/Government-Utility-Management-System/backend/node_modules/tedious/src/token/handler.ts:388:21)\n    at Readable.token (/run/media/jarvis/Data/Academic/2year/IMR/imr/Government-Utility-Management-System/backend/node_modules/tedious/src/token/token-stream-parser.ts:22:55)\n    at Readable.emit (node:events:508:28)\n    at addChunk (node:internal/streams/readable:559:12)\n    at readableAddChunkPushObjectMode (node:internal/streams/readable:536:3)\n    at Readable.push (node:internal/streams/readable:391:5)\n    at nextAsync (node:internal/streams/from:194:22)",
+    "message": "Invalid column name 'connectionDate'."
+  },
+  "number": 207,
+  "lineNumber": 1,
+  "state": 1,
+  "class": 16,
+  "serverName": "534c67221bf1",
+  "procName": "",
+  "precedingErrors": []
+}
