@@ -245,4 +245,20 @@ export declare class CustomerPortalService {
         averageConsumption: number;
         totalConsumption: number;
     }>;
+    createPayment(customerId: number, createPaymentDto: {
+        billId: number;
+        paymentAmount: number;
+        paymentMethod: string;
+        paymentDate: string;
+    }): Promise<{
+        paymentId: number;
+        billId: number;
+        amount: number;
+        method: import("../../database/entities/payment.entity").PaymentMethod;
+        status: import("../../database/entities/payment.entity").PaymentStatus | undefined;
+        transactionRef: string | null;
+        paymentDate: Date;
+        receiptNumber: string | null;
+        message: string;
+    }>;
 }

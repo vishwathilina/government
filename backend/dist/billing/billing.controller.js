@@ -42,6 +42,49 @@ let BillingController = class BillingController {
             },
         };
     }
+    async searchBills(query) {
+        if (!query) {
+            return { success: false, data: [] };
+        }
+        try {
+            const filters = {
+                search: query,
+                status: 'UNPAID',
+                limit: 100,
+                page: 1,
+            };
+            const { bills } = await this.billingService.findAll(filters);
+            const billsData = bills.map((bill) => {
+                const totalAmount = bill.getTotalAmount();
+                const paidAmount = bill.getTotalPaid();
+                const outstandingAmount = totalAmount - paidAmount;
+                const isPaid = bill.isPaid();
+                const billStatus = isPaid ? 'PAID' : (new Date() > new Date(bill.dueDate) ? 'OVERDUE' : 'UNPAID');
+                return {
+                    billId: bill.billId,
+                    billNumber: `BILL-${String(bill.billId).padStart(6, '0')}`,
+                    meterSerialNo: bill.meter?.meterSerialNo,
+                    connectionId: bill.meter?.meterId,
+                    utilityType: bill.meter?.utilityType?.name,
+                    billingPeriodStart: bill.billingPeriodStart,
+                    billingPeriodEnd: bill.billingPeriodEnd,
+                    billDate: bill.billDate,
+                    dueDate: bill.dueDate,
+                    totalAmount: totalAmount,
+                    paidAmount: paidAmount,
+                    outstandingAmount: outstandingAmount,
+                    balanceAmount: outstandingAmount,
+                    status: billStatus,
+                    isOverdue: new Date() > new Date(bill.dueDate) && !isPaid,
+                };
+            });
+            return { success: true, data: billsData };
+        }
+        catch (error) {
+            console.error('Error searching bills:', error);
+            return { success: false, data: [] };
+        }
+    }
     async findAll(filters) {
         const filterOptions = {
             customerId: filters.customerId,
@@ -280,6 +323,22 @@ __decorate([
     __metadata("design:paramtypes", [dto_1.BulkBillGenerationDto]),
     __metadata("design:returntype", Promise)
 ], BillingController.prototype, "createBulk", null);
+__decorate([
+    (0, common_1.Get)('search'),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Search bills by connection or meter number (Public)',
+        description: 'Public endpoint for searching unpaid bills by connection or meter number. Used for guest payments by renters.',
+    }),
+    (0, swagger_1.ApiQuery)({ name: 'query', description: 'Connection ID or Meter Serial Number', required: true }),
+    (0, swagger_1.ApiResponse)({
+        status: common_1.HttpStatus.OK,
+        description: 'List of unpaid bills for the connection',
+    }),
+    __param(0, (0, common_1.Query)('query')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], BillingController.prototype, "searchBills", null);
 __decorate([
     (0, common_1.Get)(),
     (0, swagger_1.ApiOperation)({

@@ -28,6 +28,10 @@ export declare class BillingController {
             failed: number;
         };
     }>;
+    searchBills(query: string): Promise<{
+        success: boolean;
+        data: any[];
+    }>;
     findAll(filters: BillFilterDto): Promise<{
         bills: Bill[];
         total: number;

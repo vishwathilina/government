@@ -189,6 +189,22 @@ export declare class CustomerPortalController {
             address: string | undefined;
         };
     }>;
+    createPayment(req: any, createPaymentDto: {
+        billId: number;
+        paymentAmount: number;
+        paymentMethod: string;
+        paymentDate: string;
+    }): Promise<{
+        paymentId: number;
+        billId: number;
+        amount: number;
+        method: import("../../database/entities").PaymentMethod;
+        status: import("../../database/entities").PaymentStatus | undefined;
+        transactionRef: string | null;
+        paymentDate: Date;
+        receiptNumber: string | null;
+        message: string;
+    }>;
     getConnections(req: any): Promise<{
         connectionId: number;
         utilityType: {

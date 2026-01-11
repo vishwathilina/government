@@ -56,6 +56,10 @@ let CustomerPortalController = class CustomerPortalController {
         const customerId = req.user.sub;
         return this.customerPortalService.getPaymentReceipt(customerId, paymentId);
     }
+    async createPayment(req, createPaymentDto) {
+        const customerId = req.user.sub;
+        return this.customerPortalService.createPayment(customerId, createPaymentDto);
+    }
     async getConnections(req) {
         const customerId = req.user.sub;
         return this.customerPortalService.getConnections(customerId);
@@ -185,6 +189,27 @@ __decorate([
     __metadata("design:paramtypes", [Object, Number]),
     __metadata("design:returntype", Promise)
 ], CustomerPortalController.prototype, "getPaymentReceipt", null);
+__decorate([
+    (0, common_1.Post)('payments'),
+    (0, common_1.HttpCode)(common_1.HttpStatus.CREATED),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Create a payment',
+        description: 'Record a payment for a bill (customer self-service)',
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: common_1.HttpStatus.CREATED,
+        description: 'Payment recorded successfully',
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: common_1.HttpStatus.BAD_REQUEST,
+        description: 'Invalid payment data',
+    }),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", Promise)
+], CustomerPortalController.prototype, "createPayment", null);
 __decorate([
     (0, common_1.Get)('connections'),
     (0, swagger_1.ApiOperation)({

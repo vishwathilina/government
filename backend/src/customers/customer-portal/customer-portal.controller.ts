@@ -2,10 +2,12 @@ import {
   Controller,
   Get,
   Post,
+  Body,
   Query,
   Param,
   ParseIntPipe,
   HttpStatus,
+  HttpCode,
   UseGuards,
   Request,
 } from '@nestjs/common';
@@ -189,6 +191,36 @@ export class CustomerPortalController {
   ) {
     const customerId = req.user.sub;
     return this.customerPortalService.getPaymentReceipt(customerId, paymentId);
+  }
+
+  /**
+   * Create a payment (customer self-service)
+   */
+  @Post('payments')
+  @HttpCode(HttpStatus.CREATED)
+  @ApiOperation({
+    summary: 'Create a payment',
+    description: 'Record a payment for a bill (customer self-service)',
+  })
+  @ApiResponse({
+    status: HttpStatus.CREATED,
+    description: 'Payment recorded successfully',
+  })
+  @ApiResponse({
+    status: HttpStatus.BAD_REQUEST,
+    description: 'Invalid payment data',
+  })
+  async createPayment(
+    @Request() req: any,
+    @Body() createPaymentDto: {
+      billId: number;
+      paymentAmount: number;
+      paymentMethod: string;
+      paymentDate: string;
+    },
+  ) {
+    const customerId = req.user.sub;
+    return this.customerPortalService.createPayment(customerId, createPaymentDto);
   }
 
   // ═══════════════════════════════════════════════════════════════════════════

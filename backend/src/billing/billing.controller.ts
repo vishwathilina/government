@@ -172,6 +172,72 @@ export class BillingController {
   }
 
   /**
+   * Public endpoint: Search bills by connection/meter number (for guest payments)
+   * No authentication required - must be defined BEFORE @Get() to avoid conflicts
+   */
+  @Get('search')
+  @ApiOperation({
+    summary: 'Search bills by connection or meter number (Public)',
+    description: 'Public endpoint for searching unpaid bills by connection or meter number. Used for guest payments by renters.',
+  })
+  @ApiQuery({ name: 'query', description: 'Connection ID or Meter Serial Number', required: true })
+  @ApiResponse({
+    status: HttpStatus.OK,
+    description: 'List of unpaid bills for the connection',
+  })
+  async searchBills(
+    @Query('query') query: string,
+  ): Promise<{ success: boolean; data: any[] }> {
+    if (!query) {
+      return { success: false, data: [] };
+    }
+
+    try {
+      // Search by connection ID or meter serial number
+      const filters = {
+        search: query,
+        status: 'UNPAID' as any, // Only show unpaid bills
+        limit: 100,
+        page: 1,
+      };
+
+      const { bills } = await this.billingService.findAll(filters);
+
+      // Transform bills to include all necessary information
+      const billsData = bills.map((bill) => {
+        const totalAmount = bill.getTotalAmount();
+        const paidAmount = bill.getTotalPaid();
+        const outstandingAmount = totalAmount - paidAmount;
+        const isPaid = bill.isPaid();
+        const billStatus = isPaid ? 'PAID' : (new Date() > new Date(bill.dueDate) ? 'OVERDUE' : 'UNPAID');
+
+        return {
+          billId: bill.billId,
+          billNumber: `BILL-${String(bill.billId).padStart(6, '0')}`,
+          meterSerialNo: bill.meter?.meterSerialNo,
+          connectionId: bill.meter?.meterId, // Using meterId as identifier
+          utilityType: bill.meter?.utilityType?.name,
+          billingPeriodStart: bill.billingPeriodStart,
+          billingPeriodEnd: bill.billingPeriodEnd,
+          billDate: bill.billDate,
+          dueDate: bill.dueDate,
+          totalAmount: totalAmount,
+          paidAmount: paidAmount,
+          outstandingAmount: outstandingAmount,
+          balanceAmount: outstandingAmount,
+          status: billStatus,
+          isOverdue: new Date() > new Date(bill.dueDate) && !isPaid,
+        };
+      });
+
+      return { success: true, data: billsData };
+    } catch (error) {
+      console.error('Error searching bills:', error);
+      return { success: false, data: [] };
+    }
+  }
+
+  /**
    * Get bills with filtering and pagination
    */
   @Get()

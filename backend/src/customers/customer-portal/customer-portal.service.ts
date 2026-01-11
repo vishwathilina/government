@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException, ForbiddenException } from '@nestjs/common';
+import { Injectable, NotFoundException, ForbiddenException, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, In, LessThan } from 'typeorm';
 import { Customer } from '../../database/entities/customer.entity';
@@ -598,6 +598,78 @@ export class CustomerPortalService {
       history,
       averageConsumption: Math.round(averageConsumption * 100) / 100,
       totalConsumption,
+    };
+  }
+
+  /**
+   * Create a payment for a bill (customer self-service)
+   */
+  async createPayment(
+    customerId: number,
+    createPaymentDto: {
+      billId: number;
+      paymentAmount: number;
+      paymentMethod: string;
+      paymentDate: string;
+    },
+  ) {
+    // Verify the bill belongs to the customer
+    const connections = await this.connectionRepository.find({
+      where: { customerId },
+      select: ['meterId'],
+    });
+
+    const meterIds = connections.filter((c) => c.meterId).map((c) => c.meterId);
+
+    const bill = await this.billRepository.findOne({
+      where: { billId: createPaymentDto.billId },
+      relations: ['meter', 'payments', 'billTaxes'],
+    });
+
+    if (!bill) {
+      throw new NotFoundException('Bill not found');
+    }
+
+    if (!meterIds.includes(bill.meterId)) {
+      throw new ForbiddenException('You do not have access to this bill');
+    }
+
+    // Validate payment amount
+    const outstandingBalance = bill.getOutstandingBalance();
+    if (createPaymentDto.paymentAmount <= 0) {
+      throw new BadRequestException('Payment amount must be greater than 0');
+    }
+
+    if (createPaymentDto.paymentAmount > outstandingBalance) {
+      throw new BadRequestException(
+        `Payment amount cannot exceed outstanding balance of ${outstandingBalance}`,
+      );
+    }
+
+    // Create payment record
+    const payment = new Payment();
+    payment.billId = createPaymentDto.billId;
+    payment.customerId = customerId;
+    payment.paymentAmount = createPaymentDto.paymentAmount;
+    payment.paymentDate = new Date(createPaymentDto.paymentDate);
+    payment.paymentMethod = createPaymentDto.paymentMethod as any;
+    payment.paymentChannel = 'CUSTOMER_PORTAL' as any;
+    payment.paymentStatus = 'COMPLETED' as any;
+    payment.transactionRef = `CUST-${Date.now()}-${customerId}`;
+    payment.employeeId = null;
+
+    const savedPayment = await this.paymentRepository.save(payment);
+
+    return {
+      paymentId: savedPayment.paymentId,
+      billId: savedPayment.billId,
+      amount: Number(savedPayment.paymentAmount),
+      method: savedPayment.paymentMethod,
+      status: savedPayment.paymentStatus,
+      transactionRef: savedPayment.transactionRef,
+      paymentDate: savedPayment.paymentDate,
+      receiptNumber: savedPayment.transactionRef,
+      message: 'Payment recorded successfully',
     };
   }
 }

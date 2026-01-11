@@ -481,6 +481,52 @@ let CustomerPortalService = class CustomerPortalService {
             totalConsumption,
         };
     }
+    async createPayment(customerId, createPaymentDto) {
+        const connections = await this.connectionRepository.find({
+            where: { customerId },
+            select: ['meterId'],
+        });
+        const meterIds = connections.filter((c) => c.meterId).map((c) => c.meterId);
+        const bill = await this.billRepository.findOne({
+            where: { billId: createPaymentDto.billId },
+            relations: ['meter', 'payments', 'billTaxes'],
+        });
+        if (!bill) {
+            throw new common_1.NotFoundException('Bill not found');
+        }
+        if (!meterIds.includes(bill.meterId)) {
+            throw new common_1.ForbiddenException('You do not have access to this bill');
+        }
+        const outstandingBalance = bill.getOutstandingBalance();
+        if (createPaymentDto.paymentAmount <= 0) {
+            throw new common_1.BadRequestException('Payment amount must be greater than 0');
+        }
+        if (createPaymentDto.paymentAmount > outstandingBalance) {
+            throw new common_1.BadRequestException(`Payment amount cannot exceed outstanding balance of ${outstandingBalance}`);
+        }
+        const payment = new payment_entity_1.Payment();
+        payment.billId = createPaymentDto.billId;
+        payment.customerId = customerId;
+        payment.paymentAmount = createPaymentDto.paymentAmount;
+        payment.paymentDate = new Date(createPaymentDto.paymentDate);
+        payment.paymentMethod = createPaymentDto.paymentMethod;
+        payment.paymentChannel = 'CUSTOMER_PORTAL';
+        payment.paymentStatus = 'COMPLETED';
+        payment.transactionRef = `CUST-${Date.now()}-${customerId}`;
+        payment.employeeId = null;
+        const savedPayment = await this.paymentRepository.save(payment);
+        return {
+            paymentId: savedPayment.paymentId,
+            billId: savedPayment.billId,
+            amount: Number(savedPayment.paymentAmount),
+            method: savedPayment.paymentMethod,
+            status: savedPayment.paymentStatus,
+            transactionRef: savedPayment.transactionRef,
+            paymentDate: savedPayment.paymentDate,
+            receiptNumber: savedPayment.transactionRef,
+            message: 'Payment recorded successfully',
+        };
+    }
 };
 exports.CustomerPortalService = CustomerPortalService;
 exports.CustomerPortalService = CustomerPortalService = __decorate([
