@@ -53,9 +53,7 @@ export default function LoginPage() {
       {/* Left Panel - Branding */}
       <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-primary-600 to-primary-800 p-12 flex-col justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-white">
-            Govenly
-          </h1>
+          <h1 className="text-3xl font-bold text-white">Govenly</h1>
         </div>
 
         <div className="space-y-8">
@@ -148,8 +146,9 @@ export default function LoginPage() {
                     id="usernameOrEmail"
                     type="text"
                     autoComplete="username"
-                    className={`input ${errors.usernameOrEmail ? "input-error" : ""
-                      }`}
+                    className={`input ${
+                      errors.usernameOrEmail ? "input-error" : ""
+                    }`}
                     placeholder="Enter your username or email"
                     {...register("usernameOrEmail")}
                   />
@@ -170,8 +169,9 @@ export default function LoginPage() {
                       id="password"
                       type={showPassword ? "text" : "password"}
                       autoComplete="current-password"
-                      className={`input pr-10 ${errors.password ? "input-error" : ""
-                        }`}
+                      className={`input pr-10 ${
+                        errors.password ? "input-error" : ""
+                      }`}
                       placeholder="Enter your password"
                       {...register("password")}
                     />
@@ -212,7 +212,6 @@ export default function LoginPage() {
               </form>
             </div>
           </div>
-
         </div>
       </div>
     </div>

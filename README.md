@@ -164,39 +164,9 @@ After running the seed script, you can login with these accounts:
 
 | Username     | Password    | Role         |
 | ------------ | ----------- | ------------ |
-| admin        | password123 | Admin        |
-| manager      | password123 | Manager      |
-| cashier      | password123 | Cashier      |
-| fieldofficer | password123 | FieldOfficer |
-| meterreader  | password123 | MeterReader  |
+| akarunaratne        | password123 | Admin        |
+| nperera      | password123 | Manager      |
+| msenanayake      | password123 | Cashier      |
+| krajapaksa | password123 | FieldOfficer |
+| kdissanayak  | password123 | MeterReader  |
 
-## API Endpoints
-
-### Authentication
-
-- `POST /api/v1/auth/login` - Employee login
-- `GET /api/v1/auth/profile` - Get current user profile
-
-### Employees
-
-- `GET /api/v1/employees` - List all employees (paginated)
-- `GET /api/v1/employees/:id` - Get employee by ID
-
-## Development Phases
-
-1. ✅ **Phase 1:** Foundation + Authentication
-2. ⬜ **Phase 2:** Customer Management
-3. ⬜ **Phase 3:** Service Connections
-4. ⬜ **Phase 4:** Meter & Readings
-5. ⬜ **Phase 5:** Billing System
-6. ⬜ **Phase 6:** Payments
-7. ⬜ **Phase 7:** Employee & HR
-8. ⬜ **Phase 8:** Work Orders & Maintenance
-9. ⬜ **Phase 9:** Inventory & Warehouse
-10. ⬜ **Phase 10:** Advanced Features
-11. ⬜ **Phase 11:** Reporting & Analytics
-12. ⬜ **Phase 12:** Testing & Deployment
-
-## License
-
-This project is proprietary and confidential.

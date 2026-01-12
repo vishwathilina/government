@@ -1257,30 +1257,30 @@ INSERT INTO dbo.Employee (first_name, middle_name, last_name, employee_no, desig
 ('Priyanka', NULL, 'Jayawardena', 'EMP004', 'Customer Service Manager', 'MANAGER', @Dept4, 'priyanka.j@ceb.lk', 'pjayawardena', '$2a$10$abcdefghijklmnopqrstuv', '2026-01-08 16:45:00'),
 
 -- Field Officers
-('Kasun', 'Nuwan', 'Rajapaksa', 'EMP005', 'Senior Field Officer', 'FIELD_OFFICER', @Dept2, 'kasun.rajapaksa@ceb.lk', 'krajapaksa', '$2a$10$abcdefghijklmnopqrstuv', '2026-01-10 07:30:00'),
-('Dilshan', 'Upul', 'Wickramasinghe', 'EMP006', 'Field Technician', 'FIELD_OFFICER', @Dept2, 'dilshan.w@ceb.lk', 'dwickrama', '$2a$10$abcdefghijklmnopqrstuv', '2026-01-09 18:20:00'),
-('Tharaka', 'Chamara', 'Gunawardena', 'EMP007', 'Water Supply Officer', 'FIELD_OFFICER', @Dept6, 'tharaka.g@nwsdb.lk', 'tgunawarden', '$2a$10$abcdefghijklmnopqrstuv', '2026-01-10 06:45:00'),
-('Dinesh', 'Mahinda', 'Bandara', 'EMP008', 'Maintenance Officer', 'FIELD_OFFICER', @Dept6, 'dinesh.bandara@nwsdb.lk', 'dbandara', '$2a$10$abcdefghijklmnopqrstuv', '2026-01-09 19:00:00'),
+('Kasun', 'Nuwan', 'Rajapaksa', 'EMP005', 'Senior Field Officer', 'FIELD_OFFICER', @Dept2, 'kasun.rajapaksa@ceb.lk', 'krajapaksa', '$2b$10$CDcKKre4IsSoQwtNJxpQmuNvd7P1WDm9hwyG4qKEKnA6sXp6VuqXi', '2026-01-10 07:30:00'),
+('Dilshan', 'Upul', 'Wickramasinghe', 'EMP006', 'Field Technician', 'FIELD_OFFICER', @Dept2, 'dilshan.w@ceb.lk', 'dwickrama', '$2b$10$CDcKKre4IsSoQwtNJxpQmuNvd7P1WDm9hwyG4qKEKnA6sXp6VuqXi', '2026-01-09 18:20:00'),
+('Tharaka', 'Chamara', 'Gunawardena', 'EMP007', 'Water Supply Officer', 'FIELD_OFFICER', @Dept6, 'tharaka.g@nwsdb.lk', 'tgunawarden', '$2b$10$CDcKKre4IsSoQwtNJxpQmuNvd7P1WDm9hwyG4qKEKnA6sXp6VuqXi', '2026-01-10 06:45:00'),
+('Dinesh', 'Mahinda', 'Bandara', 'EMP008', 'Maintenance Officer', 'FIELD_OFFICER', @Dept6, 'dinesh.bandara@nwsdb.lk', 'dbandara', '$2b$10$CDcKKre4IsSoQwtNJxpQmuNvd7P1WDm9hwyG4qKEKnA6sXp6VuqXi', '2026-01-09 19:00:00'),
 
 -- Meter Readers
-('Kumara', 'Asanka', 'Dissanayake', 'EMP009', 'Meter Reader', 'METER_READER', @Dept4, 'kumara.d@ceb.lk', 'kdissanayak', '$2a$10$abcdefghijklmnopqrstuv', '2026-01-10 05:30:00'),
-('Chaminda', 'Ruwan', 'Herath', 'EMP010', 'Meter Reader', 'METER_READER', @Dept4, 'chaminda.herath@ceb.lk', 'cherath', '$2a$10$abcdefghijklmnopqrstuv', '2026-01-09 15:45:00'),
-('Sampath', NULL, 'Amarasinghe', 'EMP011', 'Meter Reader', 'METER_READER', @Dept7, 'sampath.a@nwsdb.lk', 'samarasingh', '$2a$10$abcdefghijklmnopqrstuv', '2026-01-10 06:00:00'),
+('Kumara', 'Asanka', 'Dissanayake', 'EMP009', 'Meter Reader', 'METER_READER', @Dept4, 'kumara.d@ceb.lk', 'kdissanayak', '$2b$10$CDcKKre4IsSoQwtNJxpQmuNvd7P1WDm9hwyG4qKEKnA6sXp6VuqXi', '2026-01-10 05:30:00'),
+('Chaminda', 'Ruwan', 'Herath', 'EMP010', 'Meter Reader', 'METER_READER', @Dept4, 'chaminda.herath@ceb.lk', 'cherath', '$2b$10$CDcKKre4IsSoQwtNJxpQmuNvd7P1WDm9hwyG4qKEKnA6sXp6VuqXi', '2026-01-09 15:45:00'),
+('Sampath', NULL, 'Amarasinghe', 'EMP011', 'Meter Reader', 'METER_READER', @Dept7, 'sampath.a@nwsdb.lk', 'samarasingh', '$2b$10$CDcKKre4IsSoQwtNJxpQmuNvd7P1WDm9hwyG4qKEKnA6sXp6VuqXi', '2026-01-10 06:00:00'),
 
 -- Cashiers
-('Madhavi', 'Chathuri', 'Senanayake', 'EMP012', 'Cashier', 'CASHIER', @Dept4, 'madhavi.s@ceb.lk', 'msenanayake', '$2a$10$abcdefghijklmnopqrstuv', '2026-01-10 11:30:00'),
-('Nilmini', 'Sandya', 'Rathnayake', 'EMP013', 'Senior Cashier', 'CASHIER', @Dept4, 'nilmini.r@ceb.lk', 'nrathnayake', '$2a$10$abcdefghijklmnopqrstuv', '2026-01-09 13:15:00'),
-('Supun', 'Tharindu', 'Pathirana', 'EMP014', 'Payment Officer', 'CASHIER', @Dept7, 'supun.p@nwsdb.lk', 'spathirana', '$2a$10$abcdefghijklmnopqrstuv', '2026-01-10 10:00:00'),
+('Madhavi', 'Chathuri', 'Senanayake', 'EMP012', 'Cashier', 'CASHIER', @Dept4, 'madhavi.s@ceb.lk', 'msenanayake', '$2b$10$CDcKKre4IsSoQwtNJxpQmuNvd7P1WDm9hwyG4qKEKnA6sXp6VuqXi', '2026-01-10 11:30:00'),
+('Nilmini', 'Sandya', 'Rathnayake', 'EMP013', 'Senior Cashier', 'CASHIER', @Dept4, 'nilmini.r@ceb.lk', 'nrathnayake', '$2b$10$CDcKKre4IsSoQwtNJxpQmuNvd7P1WDm9hwyG4qKEKnA6sXp6VuqXi', '2026-01-09 13:15:00'),
+('Supun', 'Tharindu', 'Pathirana', 'EMP014', 'Payment Officer', 'CASHIER', @Dept7, 'supun.p@nwsdb.lk', 'spathirana', '$2b$10$CDcKKre4IsSoQwtNJxpQmuNvd7P1WDm9hwyG4qKEKnA6sXp6VuqXi', '2026-01-10 10:00:00'),
 
 -- Administrative Staff
-('Anusha', 'Damayanthi', 'Karunaratne', 'EMP015', 'Admin Officer', 'ADMIN', @Dept4, 'anusha.k@ceb.lk', 'akarunaratne', '$2a$10$abcdefghijklmnopqrstuv', '2026-01-09 12:00:00'),
-('Harsha', 'Madushan', 'Wijesinghe', 'EMP016', 'Connection Officer', 'ADMIN', @Dept4, 'harsha.w@ceb.lk', 'hwijesinghe', '$2a$10$abcdefghijklmnopqrstuv', '2026-01-10 09:45:00'),
-('Thilini', NULL, 'Gamage', 'EMP017', 'Tariff Administrator', 'ADMIN', @Dept3, 'thilini.gamage@ceb.lk', 'tgamage', '$2a$10$abcdefghijklmnopqrstuv', '2026-01-08 15:30:00'),
-('Amila', 'Prasanna', 'Jayasuriya', 'EMP018', 'HR Officer', 'ADMIN', @Dept10, 'amila.j@ceb.lk', 'ajayasuriya', '$2a$10$abcdefghijklmnopqrstuv', '2026-01-09 10:20:00'),
+('Anusha', 'Damayanthi', 'Karunaratne', 'EMP015', 'Admin Officer', 'ADMIN', @Dept4, 'anusha.k@ceb.lk', 'akarunaratne', '$2b$10$CDcKKre4IsSoQwtNJxpQmuNvd7P1WDm9hwyG4qKEKnA6sXp6VuqXi', '2026-01-09 12:00:00'),
+('Harsha', 'Madushan', 'Wijesinghe', 'EMP016', 'Connection Officer', 'ADMIN', @Dept4, 'harsha.w@ceb.lk', 'hwijesinghe', '$2b$10$CDcKKre4IsSoQwtNJxpQmuNvd7P1WDm9hwyG4qKEKnA6sXp6VuqXi', '2026-01-10 09:45:00'),
+('Thilini', NULL, 'Gamage', 'EMP017', 'Tariff Administrator', 'ADMIN', @Dept3, 'thilini.gamage@ceb.lk', 'tgamage', '$2b$10$CDcKKre4IsSoQwtNJxpQmuNvd7P1WDm9hwyG4qKEKnA6sXp6VuqXi', '2026-01-08 15:30:00'),
+('Amila', 'Prasanna', 'Jayasuriya', 'EMP018', 'HR Officer', 'ADMIN', @Dept10, 'amila.j@ceb.lk', 'ajayasuriya', '$2b$10$CDcKKre4IsSoQwtNJxpQmuNvd7P1WDm9hwyG4qKEKnA6sXp6VuqXi', '2026-01-09 10:20:00'),
 
 -- Engineers
-('Udaya', 'Chandra', 'Weerasinghe', 'EMP019', 'Electrical Engineer', 'ENGINEER', @Dept2, 'udaya.w@ceb.lk', 'uweerasingh', '$2a$10$abcdefghijklmnopqrstuv', '2026-01-10 08:30:00'),
-('Buddhika', NULL, 'Ratnayake', 'EMP020', 'Civil Engineer', 'ENGINEER', @Dept6, 'buddhika.r@nwsdb.lk', 'bratnayake', '$2a$10$abcdefghijklmnopqrstuv', '2026-01-09 09:00:00');
+('Udaya', 'Chandra', 'Weerasinghe', 'EMP019', 'Electrical Engineer', 'ENGINEER', @Dept2, 'udaya.w@ceb.lk', 'uweerasingh', '$2b$10$CDcKKre4IsSoQwtNJxpQmuNvd7P1WDm9hwyG4qKEKnA6sXp6VuqXi', '2026-01-10 08:30:00'),
+('Buddhika', NULL, 'Ratnayake', 'EMP020', 'Civil Engineer', 'ENGINEER', @Dept6, 'buddhika.r@nwsdb.lk', 'bratnayake', '$2b$10$CDcKKre4IsSoQwtNJxpQmuNvd7P1WDm9hwyG4qKEKnA6sXp6VuqXi', '2026-01-09 09:00:00');
 GO
 
 -- Employee Phone Numbers
@@ -2287,247 +2287,6 @@ SET ANSI_NULLS ON;
 SET QUOTED_IDENTIFIER ON;
 GO
 
-/* =========================
-   1) METER READING TRIGGERS
-   ========================= */
-
--- =============================================
--- Trigger: Auto-Generate Bill After Reading
--- Description: Automatically generates bill when a valid reading is recorded
--- Fires: AFTER INSERT on MeterReading
--- Note: This is optional - you may want to control billing manually
--- =============================================
-CREATE OR ALTER TRIGGER trg_AutoGenerateBill_AfterReading
-ON dbo.MeterReading
-AFTER INSERT
-AS
-BEGIN
-    SET NOCOUNT ON;
-    
-    -- Only generate bills for readings that mark the end of a billing period
-    -- You can control this with a flag or by checking the date
-    
-    DECLARE @meter_id BIGINT;
-    DECLARE @reading_id BIGINT;
-    DECLARE @connection_id BIGINT;
-    DECLARE @billing_period_start DATE;
-    DECLARE @billing_period_end DATE;
-    DECLARE @new_bill_id BIGINT;
-    DECLARE @result_message NVARCHAR(500);
-    
-    -- Process each inserted reading
-    DECLARE bill_cursor CURSOR FOR
-    SELECT 
-        i.meter_id,
-        i.reading_id,
-        i.reading_date,
-        sc.connection_id
-    FROM inserted i
-    INNER JOIN dbo.ServiceConnection sc ON i.meter_id = sc.meter_id
-    WHERE sc.connection_status = 'ACTIVE'
-    AND i.reading_source = 'SCHEDULED'; -- Only for scheduled readings
-    
-    OPEN bill_cursor;
-    FETCH NEXT FROM bill_cursor INTO @meter_id, @reading_id, @billing_period_end, @connection_id;
-    
-    WHILE @@FETCH_STATUS = 0
-    BEGIN
-        -- Calculate billing period start (last bill date or 30 days ago)
-        SELECT TOP 1 @billing_period_start = billing_period_end
-        FROM dbo.Bill
-        WHERE meter_id = @meter_id
-        ORDER BY billing_period_end DESC;
-        
-        IF @billing_period_start IS NULL
-            SET @billing_period_start = DATEADD(DAY, -30, @billing_period_end);
-        
-        -- Check if bill already exists for this period
-        IF NOT EXISTS (
-            SELECT 1 FROM dbo.Bill
-            WHERE meter_id = @meter_id
-            AND billing_period_start = @billing_period_start
-            AND billing_period_end = @billing_period_end
-        )
-        BEGIN
-            -- Generate bill using stored procedure
-            BEGIN TRY
-                DECLARE @due_date_calc DATE = DATEADD(DAY, 15, @billing_period_end);
-                DECLARE @bill_total DECIMAL(12,2);
-                
-                EXEC dbo.sp_GenerateBill
-                    @meter_id = @meter_id,
-                    @billing_period_start = @billing_period_start,
-                    @billing_period_end = @billing_period_end,
-                    @bill_date = @billing_period_end,
-                    @due_date = @due_date_calc,
-                    @bill_id = @new_bill_id OUTPUT,
-                    @total_amount = @bill_total OUTPUT;
-                
-                PRINT 'Auto-generated Bill ID ' + CAST(@new_bill_id AS VARCHAR(20)) + 
-                      ' for Meter ID ' + CAST(@meter_id AS VARCHAR(20)) + 
-                      ' - Amount: Rs ' + CAST(@bill_total AS VARCHAR(20));
-            END TRY
-            BEGIN CATCH
-                PRINT 'Failed to auto-generate bill for Meter ID ' + CAST(@meter_id AS VARCHAR(20)) + 
-                      ': ' + ERROR_MESSAGE();
-            END CATCH
-        END
-        
-        FETCH NEXT FROM bill_cursor INTO @meter_id, @reading_id, @billing_period_end, @connection_id;
-    END
-    
-    CLOSE bill_cursor;
-    DEALLOCATE bill_cursor;
-END
-GO
-
-/* =========================
-   2) PAYMENT TRIGGERS
-   ========================= */
-
--- =============================================
--- Trigger: Update Bill Status After Payment
--- Description: Recalculates bill payment status when payment is recorded
--- Fires: AFTER INSERT on Payment
--- =============================================
-CREATE OR ALTER TRIGGER trg_UpdateBillStatus_AfterPayment
-ON dbo.Payment
-AFTER INSERT
-AS
-BEGIN
-    SET NOCOUNT ON;
-    
-    -- Update bill payment tracking
-    -- Note: Since Bill table doesn't have a payment_status column in the schema,
-    -- this trigger logs the payment status for reporting purposes
-    
-    DECLARE @bill_id BIGINT;
-    DECLARE @total_amount DECIMAL(12,2);
-    DECLARE @paid_amount DECIMAL(12,2);
-    DECLARE @payment_status VARCHAR(20);
-    
-    -- Process each inserted payment
-    DECLARE payment_cursor CURSOR FOR
-    SELECT DISTINCT bill_id
-    FROM inserted;
-    
-    OPEN payment_cursor;
-    FETCH NEXT FROM payment_cursor INTO @bill_id;
-    
-    WHILE @@FETCH_STATUS = 0
-    BEGIN
-        -- Calculate total bill amount
-        SELECT @total_amount = (
-            energy_charge_amount + fixed_charge_amount - subsidy_amount +
-            (SELECT ISNULL(SUM(taxable_base_amount * (rate_percent_applied / 100)), 0)
-             FROM dbo.BillTax WHERE bill_id = b.bill_id) -
-            solar_export_credit
-        )
-        FROM dbo.Bill b
-        WHERE bill_id = @bill_id;
-        
-        -- Calculate total paid amount
-        SELECT @paid_amount = ISNULL(SUM(payment_amount), 0)
-        FROM dbo.Payment
-        WHERE bill_id = @bill_id;
-        
-        -- Determine payment status
-        IF @paid_amount >= @total_amount
-            SET @payment_status = 'PAID';
-        ELSE IF @paid_amount > 0
-            SET @payment_status = 'PARTIAL';
-        ELSE
-            SET @payment_status = 'UNPAID';
-        
-        PRINT 'Bill ID ' + CAST(@bill_id AS VARCHAR(20)) + 
-              ' Status: ' + @payment_status + 
-              ' (Paid: ' + CAST(@paid_amount AS VARCHAR(20)) + 
-              ' of ' + CAST(@total_amount AS VARCHAR(20)) + ')';
-        
-        -- You could insert into a BillStatusLog table here for audit trail
-        -- INSERT INTO dbo.BillStatusLog (bill_id, status, updated_at)
-        -- VALUES (@bill_id, @payment_status, GETDATE());
-        
-        FETCH NEXT FROM payment_cursor INTO @bill_id;
-    END
-    
-    CLOSE payment_cursor;
-    DEALLOCATE payment_cursor;
-END
-GO
-
-CREATE OR ALTER FUNCTION dbo.fn_GetCustomerFullName
-(
-    @customer_id BIGINT
-)
-RETURNS VARCHAR(250)
-AS
-BEGIN
-    DECLARE @full_name VARCHAR(250);
-    
-    SELECT @full_name = 
-        first_name + 
-        CASE WHEN middle_name IS NOT NULL THEN ' ' + middle_name ELSE '' END +
-        ' ' + last_name
-    FROM dbo.Customer
-    WHERE customer_id = @customer_id;
-    
-    RETURN @full_name;
-END
-GO
-
-CREATE OR ALTER FUNCTION dbo.fn_GetCustomerTypeDescription
-(
-    @customer_type VARCHAR(30)
-)
-RETURNS VARCHAR(100)
-AS
-BEGIN
-    DECLARE @description VARCHAR(100);
-    
-    SET @description = CASE @customer_type
-        WHEN 'RESIDENTIAL' THEN 'Residential Customer'
-        WHEN 'COMMERCIAL' THEN 'Commercial Business'
-        WHEN 'INDUSTRIAL' THEN 'Industrial Facility'
-        WHEN 'GOVERNMENT' THEN 'Government Agency'
-        WHEN 'AGRICULTURAL' THEN 'Agricultural Use'
-        ELSE 'Unknown Type'
-    END;
-    
-    RETURN @description;
-END
-GO
-
-CREATE OR ALTER FUNCTION dbo.fn_GetCustomerActiveMeters
-(
-    @customer_id BIGINT
-)
-RETURNS TABLE
-AS
-RETURN
-(
-    SELECT 
-        m.meter_id,
-        m.meter_serial_no,
-        ut.name as utility_type,
-        ut.code as utility_code,
-        m.installation_date,
-        m.is_smart_meter,
-        m.status,
-        sc.connection_id,
-        sc.connection_status,
-        dbo.fn_GetDaysSinceLastReading(m.meter_id) as days_since_last_reading
-    FROM dbo.Meter m
-    INNER JOIN dbo.ServiceConnection sc ON m.meter_id = sc.meter_id
-    INNER JOIN dbo.UtilityType ut ON m.utility_type_id = ut.utility_type_id
-    WHERE sc.customer_id = @customer_id
-    AND sc.connection_status = 'ACTIVE'
-);
-GO
-
-USE GovernmentUtilityDB;
-GO
-
 
 SET ANSI_NULLS ON;
 SET QUOTED_IDENTIFIER ON;
@@ -2822,6 +2581,269 @@ BEGIN
     SET @total_amount = @energy_charge + @fixed_charge - @subsidy + ISNULL(@tax_total, 0) - @export_credit;
 END
 GO
+/* =========================
+   1) METER READING TRIGGERS
+   ========================= */
+
+-- =============================================
+-- Trigger: Auto-Generate Bill After Reading
+-- Description: Automatically generates bill when a valid reading is recorded
+-- Fires: AFTER INSERT on MeterReading
+-- Note: This is optional - you may want to control billing manually
+-- =============================================
+CREATE OR ALTER TRIGGER trg_AutoGenerateBill_AfterReading
+ON dbo.MeterReading
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    -- Only generate bills for readings that mark the end of a billing period
+    -- You can control this with a flag or by checking the date
+    
+    DECLARE @meter_id BIGINT;
+    DECLARE @reading_id BIGINT;
+    DECLARE @connection_id BIGINT;
+    DECLARE @billing_period_start DATE;
+    DECLARE @billing_period_end DATE;
+    DECLARE @new_bill_id BIGINT;
+    DECLARE @result_message NVARCHAR(500);
+    
+    -- Process each inserted reading
+    DECLARE bill_cursor CURSOR FOR
+    SELECT 
+        i.meter_id,
+        i.reading_id,
+        i.reading_date,
+        sc.connection_id
+    FROM inserted i
+    INNER JOIN dbo.ServiceConnection sc ON i.meter_id = sc.meter_id
+    WHERE sc.connection_status = 'ACTIVE'
+    AND i.reading_source = 'SCHEDULED'; -- Only for scheduled readings
+    
+    OPEN bill_cursor;
+    FETCH NEXT FROM bill_cursor INTO @meter_id, @reading_id, @billing_period_end, @connection_id;
+    
+    WHILE @@FETCH_STATUS = 0
+    BEGIN
+        -- Calculate billing period start (last bill date or 30 days ago)
+        SELECT TOP 1 @billing_period_start = billing_period_end
+        FROM dbo.Bill
+        WHERE meter_id = @meter_id
+        ORDER BY billing_period_end DESC;
+        
+        IF @billing_period_start IS NULL
+            SET @billing_period_start = DATEADD(DAY, -30, @billing_period_end);
+        
+        -- Check if bill already exists for this period
+        IF NOT EXISTS (
+            SELECT 1 FROM dbo.Bill
+            WHERE meter_id = @meter_id
+            AND billing_period_start = @billing_period_start
+            AND billing_period_end = @billing_period_end
+        )
+        BEGIN
+            -- Generate bill using stored procedure
+            BEGIN TRY
+                DECLARE @due_date_calc DATE = DATEADD(DAY, 15, @billing_period_end);
+                DECLARE @bill_total DECIMAL(12,2);
+                
+                EXEC dbo.sp_GenerateBill
+                    @meter_id = @meter_id,
+                    @billing_period_start = @billing_period_start,
+                    @billing_period_end = @billing_period_end,
+                    @bill_date = @billing_period_end,
+                    @due_date = @due_date_calc,
+                    @bill_id = @new_bill_id OUTPUT,
+                    @total_amount = @bill_total OUTPUT;
+                
+                PRINT 'Auto-generated Bill ID ' + CAST(@new_bill_id AS VARCHAR(20)) + 
+                      ' for Meter ID ' + CAST(@meter_id AS VARCHAR(20)) + 
+                      ' - Amount: Rs ' + CAST(@bill_total AS VARCHAR(20));
+            END TRY
+            BEGIN CATCH
+                PRINT 'Failed to auto-generate bill for Meter ID ' + CAST(@meter_id AS VARCHAR(20)) + 
+                      ': ' + ERROR_MESSAGE();
+            END CATCH
+        END
+        
+        FETCH NEXT FROM bill_cursor INTO @meter_id, @reading_id, @billing_period_end, @connection_id;
+    END
+    
+    CLOSE bill_cursor;
+    DEALLOCATE bill_cursor;
+END
+GO
+
+/* =========================
+   2) PAYMENT TRIGGERS
+   ========================= */
+
+-- =============================================
+-- Trigger: Update Bill Status After Payment
+-- Description: Recalculates bill payment status when payment is recorded
+-- Fires: AFTER INSERT on Payment
+-- =============================================
+CREATE OR ALTER TRIGGER trg_UpdateBillStatus_AfterPayment
+ON dbo.Payment
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    -- Update bill payment tracking
+    -- Note: Since Bill table doesn't have a payment_status column in the schema,
+    -- this trigger logs the payment status for reporting purposes
+    
+    DECLARE @bill_id BIGINT;
+    DECLARE @total_amount DECIMAL(12,2);
+    DECLARE @paid_amount DECIMAL(12,2);
+    DECLARE @payment_status VARCHAR(20);
+    
+    -- Process each inserted payment
+    DECLARE payment_cursor CURSOR FOR
+    SELECT DISTINCT bill_id
+    FROM inserted;
+    
+    OPEN payment_cursor;
+    FETCH NEXT FROM payment_cursor INTO @bill_id;
+    
+    WHILE @@FETCH_STATUS = 0
+    BEGIN
+        -- Calculate total bill amount
+        SELECT @total_amount = (
+            energy_charge_amount + fixed_charge_amount - subsidy_amount +
+            (SELECT ISNULL(SUM(taxable_base_amount * (rate_percent_applied / 100)), 0)
+             FROM dbo.BillTax WHERE bill_id = b.bill_id) -
+            solar_export_credit
+        )
+        FROM dbo.Bill b
+        WHERE bill_id = @bill_id;
+        
+        -- Calculate total paid amount
+        SELECT @paid_amount = ISNULL(SUM(payment_amount), 0)
+        FROM dbo.Payment
+        WHERE bill_id = @bill_id;
+        
+        -- Determine payment status
+        IF @paid_amount >= @total_amount
+            SET @payment_status = 'PAID';
+        ELSE IF @paid_amount > 0
+            SET @payment_status = 'PARTIAL';
+        ELSE
+            SET @payment_status = 'UNPAID';
+        
+        PRINT 'Bill ID ' + CAST(@bill_id AS VARCHAR(20)) + 
+              ' Status: ' + @payment_status + 
+              ' (Paid: ' + CAST(@paid_amount AS VARCHAR(20)) + 
+              ' of ' + CAST(@total_amount AS VARCHAR(20)) + ')';
+        
+        -- You could insert into a BillStatusLog table here for audit trail
+        -- INSERT INTO dbo.BillStatusLog (bill_id, status, updated_at)
+        -- VALUES (@bill_id, @payment_status, GETDATE());
+        
+        FETCH NEXT FROM payment_cursor INTO @bill_id;
+    END
+    
+    CLOSE payment_cursor;
+    DEALLOCATE payment_cursor;
+END
+GO
+
+CREATE OR ALTER FUNCTION dbo.fn_GetCustomerFullName
+(
+    @customer_id BIGINT
+)
+RETURNS VARCHAR(250)
+AS
+BEGIN
+    DECLARE @full_name VARCHAR(250);
+    
+    SELECT @full_name = 
+        first_name + 
+        CASE WHEN middle_name IS NOT NULL THEN ' ' + middle_name ELSE '' END +
+        ' ' + last_name
+    FROM dbo.Customer
+    WHERE customer_id = @customer_id;
+    
+    RETURN @full_name;
+END
+GO
+
+CREATE OR ALTER FUNCTION dbo.fn_GetCustomerTypeDescription
+(
+    @customer_type VARCHAR(30)
+)
+RETURNS VARCHAR(100)
+AS
+BEGIN
+    DECLARE @description VARCHAR(100);
+    
+    SET @description = CASE @customer_type
+        WHEN 'RESIDENTIAL' THEN 'Residential Customer'
+        WHEN 'COMMERCIAL' THEN 'Commercial Business'
+        WHEN 'INDUSTRIAL' THEN 'Industrial Facility'
+        WHEN 'GOVERNMENT' THEN 'Government Agency'
+        WHEN 'AGRICULTURAL' THEN 'Agricultural Use'
+        ELSE 'Unknown Type'
+    END;
+    
+    RETURN @description;
+END
+GO
+
+CREATE OR ALTER FUNCTION dbo.fn_GetDaysSinceLastReading
+(
+    @meter_id BIGINT
+)
+RETURNS INT
+AS
+BEGIN
+    DECLARE @days INT;
+    DECLARE @last_reading_date DATE;
+    
+    SELECT TOP 1 @last_reading_date = reading_date
+    FROM dbo.MeterReading
+    WHERE meter_id = @meter_id
+    ORDER BY reading_date DESC;
+    
+    IF @last_reading_date IS NOT NULL
+        SET @days = DATEDIFF(DAY, @last_reading_date, GETDATE());
+    ELSE
+        SET @days = NULL;
+    
+    RETURN @days;
+END
+GO
+CREATE OR ALTER FUNCTION dbo.fn_GetCustomerActiveMeters
+(
+    @customer_id BIGINT
+)
+RETURNS TABLE
+AS
+RETURN
+(
+    SELECT 
+        m.meter_id,
+        m.meter_serial_no,
+        ut.name as utility_type,
+        ut.code as utility_code,
+        m.installation_date,
+        m.is_smart_meter,
+        m.status,
+        sc.connection_id,
+        sc.connection_status,
+        dbo.fn_GetDaysSinceLastReading(m.meter_id) as days_since_last_reading
+    FROM dbo.Meter m
+    INNER JOIN dbo.ServiceConnection sc ON m.meter_id = sc.meter_id
+    INNER JOIN dbo.UtilityType ut ON m.utility_type_id = ut.utility_type_id
+    WHERE sc.customer_id = @customer_id
+    AND sc.connection_status = 'ACTIVE'
+);
+GO
+
+
+
 -- =============================================
 -- 1. REVENUE TRENDS - DAILY REVENUE SUMMARY
 -- =============================================
